@@ -33,7 +33,7 @@ import org.junit.platform.commons.util.ReflectionUtils;
  */
 public class RestAssuredExtension implements TestInstancePostProcessor, BeforeEachCallback, AfterEachCallback {
 
-	private static final Logger LOGGER = Logger.getLogger(RestAssuredExtension.class.getName());
+	private static final Logger log = Logger.getLogger(RestAssuredExtension.class.getName());
 
 	private static final ExtensionContext.Namespace NAMESPACE = ExtensionContext.Namespace.create(RestAssuredExtension.class);
 
@@ -82,7 +82,7 @@ public class RestAssuredExtension implements TestInstancePostProcessor, BeforeEa
 
 			server.start();
 
-			LOGGER.info(server.getAddress() + " started serving " + endpoints(contextPath, resourceFactories));
+			log.info(server.getAddress() + " started serving " + endpoints(contextPath, resourceFactories));
 		}
 	}
 
@@ -93,12 +93,18 @@ public class RestAssuredExtension implements TestInstancePostProcessor, BeforeEa
 		for (RestAssuredSetup setup : setups) {
 
 			final HttpContextBuilder contextBuilder = setup.getContextBuilder();
+			if (contextBuilder != null) {
+				log.info(() -> "cleaning up context builder for " + endpoints(setup.getContextPath(), setup.getResourceFactories()) + " ...");
+				contextBuilder.cleanup();
+			}
+
 			final HttpServer server = setup.getServer();
+			if (server != null) {
+				log.info(() -> "stopping server for " + endpoints(setup.getContextPath(), setup.getResourceFactories()) + " ...");
+				server.stop(0);
+				log.info(server.getAddress() + " stopped.");
+			}
 
-			contextBuilder.cleanup();
-			server.stop(0);
-
-			LOGGER.info(server.getAddress() + " stopped.");
 		}
 	}
 
