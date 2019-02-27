@@ -24,7 +24,7 @@ The rest-assured-extension is a [JUnit 5](https://junit.org/junit5/) [extension]
     <dependency>
         <groupId>com.github.JensPiegsa</groupId>
         <artifactId>rest-assured-extension</artifactId>
-        <version>0.1.0</version>
+        <version>0.1.2</version>
         <scope>test</scope>
     </dependency>
 
