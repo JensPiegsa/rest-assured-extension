@@ -3,6 +3,7 @@
 [![Build Status](https://travis-ci.org/JensPiegsa/rest-assured-extension.svg?branch=master)](https://travis-ci.org/JensPiegsa/rest-assured-extension)
 [![codecov](https://codecov.io/gh/JensPiegsa/rest-assured-extension/branch/master/graph/badge.svg)](https://codecov.io/gh/JensPiegsa/rest-assured-extension)
 [![](https://jitpack.io/v/JensPiegsa/rest-assured-extension.svg)](https://jitpack.io/#JensPiegsa/rest-assured-extension)
+[![Donate](https://img.shields.io/badge/Donate-PayPal-green.svg)](https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=3WB8AXMP4VY98)
 
 The rest-assured-extension is a [JUnit 5](https://junit.org/junit5/) [extension](https://junit.org/junit5/docs/current/user-guide/#extensions) for [REST-assured](http://rest-assured.io/).
 
